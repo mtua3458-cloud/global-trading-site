@@ -164,7 +164,7 @@
             z-index: 4;
         }
 
-        /* 1. Aro Azul Chillón Grueso */
+        /* Aro Azul Neón Exterior */
         .orbit-blue-main {
             position: absolute;
             width: 100%;
@@ -185,7 +185,7 @@
             animation: spinRing 4s linear infinite;
         }
 
-        /* 2. Aro Dorado Fino Interno */
+        /* Aro Dorado Interior */
         .orbit-gold-inner {
             position: absolute;
             width: calc(100% - 14px);
@@ -211,7 +211,7 @@
             100% { transform: rotate(360deg); }
         }
 
-        /* Esfera 3D con Aura Azul fija */
+        /* Esfera 3D con rotación de textura suave */
         .sphere-body {
             width: 195px;
             height: 195px;
@@ -219,10 +219,10 @@
             position: relative;
             overflow: hidden;
             background-color: #080d14;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            perspective: 800px;
+            background-image: url('logo.png');
+            background-size: cover;
+            background-repeat: repeat-x;
+            animation: rotatePlanetTexture 90s linear infinite;
             box-shadow: 
                 0 0 55px rgba(0, 210, 255, 0.6),
                 0 0 95px rgba(0, 140, 255, 0.35),
@@ -240,46 +240,7 @@
             border-radius: 50%;
             background: radial-gradient(circle at 30% 30%, rgba(255,255,255,0.25) 0%, rgba(0,0,0,0) 55%, rgba(0,0,0,0.92) 100%);
             pointer-events: none;
-            z-index: 5;
-        }
-
-        /* La imagen/contenido interior dando vueltas como una moneda */
-        .coin-inner-wrapper {
-            width: 135px;
-            height: 135px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            position: relative;
             z-index: 3;
-            transform-style: preserve-3d;
-            animation: coinSpin3D 5s linear infinite;
-        }
-
-        .coin-graphic {
-            max-width: 100%;
-            max-height: 100%;
-            object-fit: contain;
-            user-select: none;
-            filter: drop-shadow(0 4px 10px rgba(0, 0, 0, 0.7));
-        }
-
-        .dollar-symbol {
-            color: var(--gold);
-            font-size: 5.8rem;
-            font-weight: 900;
-            line-height: 1;
-            user-select: none;
-            filter: drop-shadow(0 4px 10px rgba(0, 0, 0, 0.7));
-        }
-
-        @keyframes coinSpin3D {
-            0% {
-                transform: rotateY(0deg);
-            }
-            100% {
-                transform: rotateY(360deg);
-            }
         }
 
         .sphere-ground-shadow {
@@ -289,6 +250,11 @@
             border-radius: 50%;
             margin-top: 15px;
             animation: shadowPulse 4s ease-in-out infinite;
+        }
+
+        @keyframes rotatePlanetTexture {
+            0% { background-position: 0 0; }
+            100% { background-position: 1850px 0; }
         }
 
         @keyframes floatSphere {
@@ -384,7 +350,7 @@
             margin: 0 auto;
         }
 
-        /* Cards Grid */
+        /* Cards Grid con interactividad (hover) */
         .grid-container {
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
@@ -669,18 +635,14 @@
                 
                 <div class="sphere-stage">
                     <div class="orbit-system">
-                        <!-- Aro Doble Exterior Giratorio -->
+                        <!-- Aros orbitales dobles -->
                         <div class="orbit-tilt">
                             <div class="orbit-blue-main"></div>
                             <div class="orbit-gold-inner"></div>
                         </div>
                         
-                        <!-- Esfera con contenido interior que gira como moneda 3D -->
-                        <div class="sphere-body">
-                            <div class="coin-inner-wrapper">
-                                <img src="logo.png" alt="Logo Graphic" class="coin-graphic">
-                            </div>
-                        </div>
+                        <!-- Esfera con textura continua -->
+                        <div class="sphere-body"></div>
                     </div>
                     <div class="sphere-ground-shadow"></div>
                 </div>
