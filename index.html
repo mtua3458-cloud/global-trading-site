@@ -111,14 +111,14 @@
             border-radius: 2px;
         }
 
-        /* Hero Section con degradado suave hacia el fondo negro */
+        /* Hero Section con degradado puro (sin líneas cortadas) */
         .hero {
-            background: linear-gradient(to bottom, var(--bg-card) 0%, #101826 65%, var(--bg-body) 100%);
+            background: linear-gradient(180deg, #151f2e 0%, #111a28 35%, #0d121c 100%);
             padding: 4.5rem 2rem 4rem;
             text-align: center;
-            box-shadow: 0 15px 35px rgba(0, 0, 0, 0.3);
             margin-bottom: 2.5rem;
-            border-bottom: 1px solid rgba(255, 255, 255, 0.04);
+            border-bottom: none; /* Cero líneas duras abajo */
+            box-shadow: none;
         }
 
         .hero-inner {
@@ -544,7 +544,7 @@
     </header>
 
     <main>
-        <!-- Hero Section con Degradado Suave hacia el Fondo -->
+        <!-- Hero Section con Degradado Fundido (Sin Línea) -->
         <section class="hero">
             <div class="hero-inner">
                 
