@@ -66,6 +66,7 @@
             height: 36px;
             object-fit: cover;
             border-radius: 50%;
+            flex-shrink: 0;
         }
 
         .brand-title {
@@ -73,6 +74,7 @@
             font-weight: 800;
             font-size: 1.15rem;
             letter-spacing: 0.5px;
+            white-space: nowrap;
         }
 
         .nav-links {
@@ -124,7 +126,7 @@
             animation: floatSphere 4s ease-in-out infinite;
         }
 
-        /* Esfera 3D con Aura Azul y giro ultra lento (90 segundos) */
+        /* Esfera 3D con Aura Azul y giro ultra lento */
         .sphere-body {
             width: 185px;
             height: 185px;
@@ -136,7 +138,6 @@
             background-size: cover;
             background-repeat: repeat-x;
             animation: rotatePlanetTexture 90s linear infinite;
-            /* Aura azul eléctrica exterior envolvente */
             box-shadow: 
                 0 0 50px rgba(0, 210, 255, 0.55),
                 0 0 90px rgba(0, 140, 255, 0.35),
@@ -146,7 +147,6 @@
             border: none;
         }
 
-        /* Capa de curvatura y brillo esférico */
         .sphere-body::after {
             content: '';
             position: absolute;
@@ -157,7 +157,6 @@
             z-index: 3;
         }
 
-        /* Sombra en el piso con tinte del resplandor */
         .sphere-ground-shadow {
             width: 130px;
             height: 16px;
@@ -447,10 +446,59 @@
             margin-top: 3rem;
         }
 
+        /* Ajustes Mobile Responsivos */
         @media (max-width: 900px) {
             .inquiry-card {
                 grid-template-columns: 1fr;
                 gap: 2rem;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .navbar {
+                flex-direction: column;
+                gap: 0.75rem;
+                padding: 0.75rem 1rem;
+            }
+
+            .brand-container {
+                justify-content: center;
+                gap: 8px;
+            }
+
+            .nav-logo {
+                width: 28px;
+                height: 28px;
+            }
+
+            .brand-title {
+                font-size: 0.95rem;
+                white-space: normal;
+                text-align: center;
+            }
+
+            .nav-links {
+                gap: 1.25rem;
+                justify-content: center;
+                width: 100%;
+                border-top: 1px solid rgba(255, 255, 255, 0.05);
+                padding-top: 0.5rem;
+            }
+
+            .nav-links a {
+                font-size: 0.85rem;
+            }
+
+            .hero h1 {
+                font-size: 1.5rem;
+            }
+
+            .hero {
+                padding: 2.5rem 1.25rem 2rem;
+            }
+
+            .section-block {
+                padding: 1.25rem 1rem 2rem;
             }
         }
     </style>
@@ -473,7 +521,7 @@
     </header>
 
     <main>
-        <!-- Hero Section con Esfera Flotante y Giro Ultra Lento -->
+        <!-- Hero Section con Esfera Flotante y Aura Azul -->
         <section class="hero">
             <div class="hero-inner">
                 
