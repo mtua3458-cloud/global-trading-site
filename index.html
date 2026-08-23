@@ -36,7 +36,7 @@
             line-height: 1.5;
         }
 
-        /* Top Header con línea divisoria plateada tenue */
+        /* Top Header */
         header {
             position: sticky;
             top: 0;
@@ -111,7 +111,7 @@
             border-radius: 2px;
         }
 
-        /* Hero Section con degradado puro (sin líneas cortadas) */
+        /* Hero Section */
         .hero {
             background: linear-gradient(180deg, #151f2e 0%, #111a28 35%, #0d121c 100%);
             padding: 4.5rem 2rem 4rem;
@@ -126,52 +126,66 @@
             margin: 0 auto;
         }
 
-        /* Escenario de flotación */
+        /* Escenario 3D */
         .sphere-stage {
             display: flex;
             flex-direction: column;
             align-items: center;
             justify-content: center;
             margin: 0 auto 2.5rem;
-            width: 260px;
-            height: 260px;
+            width: 290px;
+            height: 290px;
             position: relative;
-            perspective: 1000px;
+            perspective: 1200px;
             animation: floatSphere 4s ease-in-out infinite;
         }
 
-        /* Capas 3D del Anillo Orbital (Dorado / Azul) */
-        .orbit-back, .orbit-front {
+        .orbit-system {
+            position: relative;
+            width: 195px;
+            height: 195px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transform-style: preserve-3d;
+        }
+
+        /* Anillo Exterior Grueso Dorado-Platino / Azul */
+        .orbit-tilt {
             position: absolute;
-            width: 285px;
-            height: 285px;
-            border-radius: 50%;
+            width: 300px;
+            height: 300px;
+            transform: rotateX(72deg) rotateY(-16deg);
+            transform-style: preserve-3d;
             pointer-events: none;
-            top: 50%;
-            left: 50%;
-            margin-top: -142.5px;
-            margin-left: -142.5px;
-            transform: rotateX(72deg) rotateY(-18deg);
+            display: flex;
+            align-items: center;
+            justify-content: center;
         }
 
-        /* Pasa por DETRÁS de la esfera */
-        .orbit-back {
-            z-index: 1;
-            border-top: 5px solid var(--gold);
-            border-left: 4px solid #0055ff;
-            clip-path: polygon(0 0, 100% 0, 100% 50%, 0 50%);
-            box-shadow: 0 -4px 18px rgba(0, 180, 255, 0.6);
+        .orbit-spinner {
+            width: 100%;
+            height: 100%;
+            border-radius: 50%;
+            padding: 7px; /* Grosor del cinturón */
+            background: conic-gradient(
+                from 0deg,
+                #faebd7 0%,
+                #d4af37 18%,
+                #00d4ff 42%,
+                #0055ff 55%,
+                #d4af37 78%,
+                #faebd7 100%
+            );
+            -webkit-mask: radial-gradient(farthest-side, transparent calc(100% - 7px), #fff calc(100% - 6px));
+            mask: radial-gradient(farthest-side, transparent calc(100% - 7px), #fff calc(100% - 6px));
+            box-shadow: 0 0 25px rgba(0, 212, 255, 0.7);
+            animation: spinOrbit 4.5s linear infinite;
         }
 
-        /* Pasa por DELANTE de la esfera */
-        .orbit-front {
-            z-index: 5;
-            border-bottom: 5px solid var(--gold);
-            border-right: 4px solid var(--cyan);
-            clip-path: polygon(0 50%, 100% 50%, 100% 100%, 0 100%);
-            box-shadow: 
-                0 6px 20px rgba(0, 210, 255, 0.85),
-                inset 0 -3px 8px rgba(244, 196, 83, 0.8);
+        @keyframes spinOrbit {
+            0% { transform: rotate(0deg); }
+            100% { transform: rotate(360deg); }
         }
 
         /* Esfera 3D con Aura Azul y giro ultra lento */
@@ -211,7 +225,7 @@
             height: 16px;
             background: radial-gradient(ellipse at center, rgba(0, 150, 255, 0.35) 0%, rgba(0, 0, 0, 0.8) 40%, rgba(0, 0, 0, 0) 70%);
             border-radius: 50%;
-            margin-top: 10px;
+            margin-top: 15px;
             animation: shadowPulse 4s ease-in-out infinite;
         }
 
@@ -581,14 +595,17 @@
     </header>
 
     <main>
-        <!-- Hero Section con Degradado Fundido (Sin Línea) -->
+        <!-- Hero Section -->
         <section class="hero">
             <div class="hero-inner">
                 
                 <div class="sphere-stage">
-                    <div class="orbit-back"></div>
-                    <div class="sphere-body"></div>
-                    <div class="orbit-front"></div>
+                    <div class="orbit-system">
+                        <div class="orbit-tilt">
+                            <div class="orbit-spinner"></div>
+                        </div>
+                        <div class="sphere-body"></div>
+                    </div>
                     <div class="sphere-ground-shadow"></div>
                 </div>
 
