@@ -1,290 +1,724 @@
 <!DOCTYPE html>
-<html lang="es">
+<html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Global Trading Solutions LLC</title>
+    <title>Global Trading Solutions LLC | Corporate Parent Entity</title>
+    <link rel="icon" type="image/png" href="icono.png">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
     <style>
+        :root {
+            --bg-body: #0d121c;
+            --bg-card: #151f2e;
+            --gold: #f4c453;
+            --cyan: #38bdf8;
+            --badge-bg: #0c334d;
+            --badge-border: #145374;
+            --text-white: #ffffff;
+            --text-muted: #94a3b8;
+            --input-bg: #0b1019;
+            --border-card: rgba(255, 255, 255, 0.08);
+        }
+
         * {
             margin: 0;
             padding: 0;
             box-sizing: border-box;
-            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+            scroll-behavior: smooth;
         }
 
         body {
-            background-color: #060b13;
-            color: #ffffff;
-            min-height: 100vh;
-            display: flex;
-            flex-direction: column;
-            overflow-x: hidden;
+            font-family: 'Plus Jakarta Sans', sans-serif;
+            background-color: var(--bg-body);
+            color: var(--text-white);
+            line-height: 1.5;
         }
 
-        /* Navbar */
+        /* Top Header con línea divisoria plateada tenue */
         header {
+            position: sticky;
+            top: 0;
+            background: rgba(13, 18, 28, 0.96);
+            backdrop-filter: blur(14px);
+            z-index: 1000;
+            border-bottom: 1px solid rgba(226, 232, 240, 0.18);
+            width: 100%;
+        }
+
+        .navbar {
+            max-width: 100%;
+            margin: 0;
+            padding: 1.2rem 3.5rem;
             display: flex;
             justify-content: space-between;
             align-items: center;
-            padding: 1.2rem 3rem;
-            background: rgba(6, 11, 19, 0.95);
-            border-bottom: 1px solid rgba(255, 255, 255, 0.05);
         }
 
-        .brand-header {
+        .brand-container {
             display: flex;
             align-items: center;
-            gap: 12px;
-            font-size: 1.25rem;
-            font-weight: 700;
-            color: #f5eedc;
-        }
-
-        .brand-header img {
-            width: 38px;
-            height: 38px;
-            border-radius: 50%;
-        }
-
-        nav a {
-            color: #d4af37;
+            gap: 15px;
             text-decoration: none;
-            margin-left: 2rem;
-            font-size: 0.95rem;
-            font-weight: 500;
-            transition: color 0.3s;
         }
 
-        nav a.secondary {
-            color: #94a3b8;
-        }
-
-        nav a:hover {
-            color: #ffffff;
-        }
-
-        /* Hero Section */
-        .hero {
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            text-align: center;
-            padding: 3rem 1.5rem 2rem 1.5rem;
-        }
-
-        /* Contenedor 3D de la Esfera y Cinturón */
-        .sphere-container {
-            position: relative;
-            width: 280px;
-            height: 280px;
-            margin-bottom: 2rem;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            perspective: 1000px;
-        }
-
-        .sphere {
-            width: 220px;
-            height: 220px;
+        .nav-logo {
+            width: 44px;
+            height: 44px;
+            object-fit: cover;
             border-radius: 50%;
-            background: url('logo.png') center/cover no-repeat;
-            box-shadow: 0 0 45px rgba(0, 180, 255, 0.45), inset 0 0 25px rgba(0, 0, 0, 0.9);
+            flex-shrink: 0;
+            box-shadow: 0 0 15px rgba(244, 196, 83, 0.25);
+        }
+
+        .brand-title {
+            color: var(--gold);
+            font-weight: 800;
+            font-size: 1.35rem;
+            letter-spacing: 0.5px;
+            white-space: nowrap;
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 2.8rem;
+            align-items: center;
+        }
+
+        .nav-links a {
+            color: #cbd5e1;
+            text-decoration: none;
+            font-size: 1.05rem;
+            font-weight: 700;
             position: relative;
-            z-index: 2;
+            padding: 6px 0;
+            transition: color 0.25s ease;
         }
 
-        /* Cinturón / Anillo Orbital */
-        .orbit-ring {
-            position: absolute;
-            width: 320px;
-            height: 320px;
-            border-radius: 50%;
-            border: 4px solid #d4af37;
-            box-shadow: 0 0 20px rgba(0, 195, 255, 0.8), inset 0 0 15px rgba(0, 195, 255, 0.6);
-            transform: rotateX(75deg) rotateY(-20deg);
-            transform-style: preserve-3d;
-            pointer-events: none;
-            z-index: 3;
-            animation: orbitRotate 8s linear infinite;
+        .nav-links a:hover {
+            color: var(--gold);
         }
 
-        .orbit-ring::after {
+        .nav-links a:hover::after {
             content: '';
             position: absolute;
-            top: -6px;
-            left: -6px;
-            right: -6px;
-            bottom: -6px;
-            border-radius: 50%;
-            border: 2px solid rgba(0, 212, 255, 0.7);
-            filter: blur(1px);
-        }
-
-        @keyframes orbitRotate {
-            0% { transform: rotateX(75deg) rotateY(-20deg) rotateZ(0deg); }
-            100% { transform: rotateX(75deg) rotateY(-20deg) rotateZ(360deg); }
-        }
-
-        .hero-title {
-            font-size: 2.2rem;
-            font-weight: 800;
-            letter-spacing: 0.5px;
-            background: linear-gradient(180deg, #ffffff 0%, #d4af37 100%);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-            margin-bottom: 0.75rem;
-        }
-
-        .hero-subtitle {
-            color: #00d4ff;
-            font-size: 0.9rem;
-            font-weight: 600;
-            letter-spacing: 1.5px;
-            text-transform: uppercase;
-            margin-bottom: 1.25rem;
-        }
-
-        .quote-box {
-            background: rgba(14, 23, 38, 0.7);
-            border: 1px solid rgba(212, 175, 55, 0.3);
-            border-radius: 6px;
-            padding: 0.8rem 1.8rem;
-            color: #d4af37;
-            font-style: italic;
-            font-size: 0.95rem;
-            max-width: 650px;
-        }
-
-        /* Portfolio Section */
-        .portfolio-section {
-            max-width: 1200px;
-            margin: 2rem auto;
-            padding: 0 1.5rem;
-            text-align: center;
-        }
-
-        .section-header {
-            font-size: 1.1rem;
-            font-weight: 700;
-            letter-spacing: 2px;
-            color: #f3e7c4;
-            text-transform: uppercase;
-            margin-bottom: 0.8rem;
-        }
-
-        .gradient-line {
-            height: 4px;
-            width: 320px;
-            margin: 0 auto 2.5rem auto;
-            background: linear-gradient(90deg, #9d4edd 0%, #00d4ff 50%, #ff4d6d 100%);
+            bottom: -2px;
+            left: 0;
+            width: 100%;
+            height: 2.5px;
+            background-color: var(--cyan);
             border-radius: 2px;
         }
 
+        /* Hero Section con degradado puro (sin líneas cortadas) */
+        .hero {
+            background: linear-gradient(180deg, #151f2e 0%, #111a28 35%, #0d121c 100%);
+            padding: 4.5rem 2rem 4rem;
+            text-align: center;
+            margin-bottom: 2.5rem;
+            border-bottom: none; /* Cero líneas duras abajo */
+            box-shadow: none;
+        }
+
+        .hero-inner {
+            max-width: 950px;
+            margin: 0 auto;
+        }
+
+        /* Escenario de flotación */
+        .sphere-stage {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            margin: 0 auto 2.5rem;
+            width: 220px;
+            height: 240px;
+            animation: floatSphere 4s ease-in-out infinite;
+        }
+
+        /* Esfera 3D con Aura Azul y giro ultra lento */
+        .sphere-body {
+            width: 195px;
+            height: 195px;
+            border-radius: 50%;
+            position: relative;
+            overflow: hidden;
+            background-color: #080d14;
+            background-image: url('logo.png');
+            background-size: cover;
+            background-repeat: repeat-x;
+            animation: rotatePlanetTexture 90s linear infinite;
+            box-shadow: 
+                0 0 55px rgba(0, 210, 255, 0.6),
+                0 0 95px rgba(0, 140, 255, 0.35),
+                0 25px 50px rgba(0, 0, 0, 0.9),
+                inset -25px -25px 45px rgba(0, 0, 0, 0.95),
+                inset 15px 15px 30px rgba(255, 255, 255, 0.25);
+            border: none;
+        }
+
+        .sphere-body::after {
+            content: '';
+            position: absolute;
+            top: 0; left: 0; width: 100%; height: 100%;
+            border-radius: 50%;
+            background: radial-gradient(circle at 30% 30%, rgba(255,255,255,0.25) 0%, rgba(0,0,0,0) 55%, rgba(0,0,0,0.92) 100%);
+            pointer-events: none;
+            z-index: 3;
+        }
+
+        .sphere-ground-shadow {
+            width: 140px;
+            height: 16px;
+            background: radial-gradient(ellipse at center, rgba(0, 150, 255, 0.35) 0%, rgba(0, 0, 0, 0.8) 40%, rgba(0, 0, 0, 0) 70%);
+            border-radius: 50%;
+            margin-top: 10px;
+            animation: shadowPulse 4s ease-in-out infinite;
+        }
+
+        @keyframes rotatePlanetTexture {
+            0% { background-position: 0 0; }
+            100% { background-position: 1850px 0; }
+        }
+
+        @keyframes floatSphere {
+            0%, 100% {
+                transform: translateY(0px) scale(1);
+            }
+            50% {
+                transform: translateY(-16px) scale(1.04);
+            }
+        }
+
+        @keyframes shadowPulse {
+            0%, 100% {
+                transform: scale(1);
+                opacity: 0.9;
+            }
+            50% {
+                transform: scale(0.75);
+                opacity: 0.45;
+            }
+        }
+
+        .hero h1 {
+            color: var(--gold);
+            font-size: 2.3rem;
+            font-weight: 900;
+            letter-spacing: 1px;
+            text-transform: uppercase;
+            margin-bottom: 0.6rem;
+        }
+
+        .hero-subtitle {
+            color: var(--cyan);
+            font-size: 0.9rem;
+            font-weight: 800;
+            letter-spacing: 2px;
+            text-transform: uppercase;
+            margin-bottom: 1.3rem;
+        }
+
+        .hero-desc {
+            color: var(--text-muted);
+            font-size: 0.98rem;
+            line-height: 1.6;
+            max-width: 820px;
+            margin: 0 auto 1.8rem;
+        }
+
+        .quote-box {
+            display: inline-block;
+            background: rgba(13, 18, 28, 0.6);
+            border-left: 3px solid var(--gold);
+            padding: 0.85rem 2.2rem;
+            border-radius: 4px;
+            color: #fef08a;
+            font-style: italic;
+            font-size: 0.92rem;
+            font-weight: 500;
+        }
+
+        /* Section Container & Title */
+        .section-block {
+            padding: 2rem 2rem 3rem;
+        }
+
+        .section-header {
+            text-align: center;
+            margin-bottom: 2.2rem;
+            padding: 0 1rem;
+        }
+
+        .section-header h2 {
+            color: var(--gold);
+            font-size: 1.55rem;
+            font-weight: 900;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            margin-bottom: 0.25rem;
+        }
+
+        .accent-bar {
+            width: 60px;
+            height: 4px;
+            margin: 0.45rem auto 0.85rem;
+            border-radius: 3px;
+            background: linear-gradient(to right, #ff3b30, #ff9500, #ffcc00, #34c759, #00c7be, #007aff, #af52de);
+        }
+
+        .section-header p {
+            color: var(--text-muted);
+            font-size: 0.92rem;
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
         /* Cards Grid */
-        .cards-grid {
+        .grid-container {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
             gap: 1.5rem;
-            text-align: left;
+            max-width: 1200px;
+            margin: 0 auto;
         }
 
         .card {
-            background: rgba(10, 18, 30, 0.8);
-            border: 1px solid rgba(0, 180, 255, 0.15);
+            background-color: var(--bg-card);
+            border: 1px solid var(--border-card);
             border-radius: 12px;
-            padding: 1.5rem;
-            transition: transform 0.3s, border-color 0.3s;
+            padding: 2rem 1.75rem;
+            display: flex;
+            flex-direction: column;
+            box-shadow: 0 8px 24px rgba(0, 0, 0, 0.25);
         }
 
-        .card:hover {
-            transform: translateY(-4px);
-            border-color: rgba(212, 175, 55, 0.4);
+        .badge-bar {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            margin-bottom: 1.2rem;
+            min-height: 28px;
         }
 
-        .card-tag {
-            display: inline-block;
-            font-size: 0.7rem;
-            font-weight: 700;
+        .badge {
+            background-color: var(--badge-bg);
+            border: 1px solid var(--badge-border);
+            color: var(--cyan);
+            padding: 0.3rem 0.75rem;
+            border-radius: 6px;
+            font-size: 0.72rem;
+            font-weight: 800;
             text-transform: uppercase;
-            letter-spacing: 1px;
-            color: #00d4ff;
-            background: rgba(0, 212, 255, 0.1);
-            border: 1px solid rgba(0, 212, 255, 0.25);
-            padding: 4px 8px;
-            border-radius: 4px;
-            margin-bottom: 1rem;
+            letter-spacing: 0.5px;
         }
 
-        .card-title {
-            font-size: 1.15rem;
-            font-weight: 700;
-            color: #ffffff;
-            margin-bottom: 0.5rem;
+        .badge-icon {
+            font-size: 1.35rem;
+            line-height: 1;
         }
 
-        .card-desc {
+        .card h3 {
+            color: var(--gold);
+            font-size: 1.25rem;
+            font-weight: 800;
+            margin-bottom: 0.7rem;
+        }
+
+        .card p {
+            color: var(--text-muted);
+            font-size: 0.9rem;
+            line-height: 1.6;
+        }
+
+        /* Official Inquiries Box */
+        .inquiry-wrapper {
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .inquiry-card {
+            background-color: var(--bg-card);
+            border: 1px solid var(--border-card);
+            border-radius: 12px;
+            padding: 2.5rem 2.2rem;
+            display: grid;
+            grid-template-columns: 1.15fr 1fr;
+            gap: 3.5rem;
+            box-shadow: 0 8px 24px rgba(0, 0, 0, 0.25);
+        }
+
+        .form-group {
+            margin-bottom: 1.1rem;
+        }
+
+        .form-group label {
+            display: block;
+            color: var(--gold);
             font-size: 0.85rem;
+            font-weight: 800;
+            margin-bottom: 0.45rem;
+            letter-spacing: 0.3px;
+        }
+
+        .form-group input,
+        .form-group select,
+        .form-group textarea {
+            width: 100%;
+            background-color: var(--input-bg);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            border-radius: 6px;
+            padding: 0.75rem 0.95rem;
+            color: #ffffff;
+            font-family: inherit;
+            font-size: 0.88rem;
+        }
+
+        .form-group input::placeholder,
+        .form-group textarea::placeholder {
+            color: #64748b;
+        }
+
+        .form-group select {
+            color: #cbd5e1;
+        }
+
+        .form-group textarea {
+            resize: vertical;
+            height: 90px;
+        }
+
+        .btn-submit {
+            width: 100%;
+            background-color: var(--gold);
+            color: #0b1019;
+            font-weight: 800;
+            font-size: 0.85rem;
+            letter-spacing: 1px;
+            text-transform: uppercase;
+            padding: 0.9rem;
+            border: none;
+            border-radius: 6px;
+            cursor: pointer;
+            margin-top: 0.4rem;
+            transition: opacity 0.2s;
+        }
+
+        .btn-submit:hover {
+            opacity: 0.9;
+        }
+
+        /* Direct Channels Panel */
+        .verification-info h3 {
+            color: var(--gold);
+            font-size: 1.1rem;
+            font-weight: 800;
+            margin-bottom: 0.4rem;
+        }
+
+        .verification-info .info-sub {
+            color: var(--text-muted);
+            font-size: 0.84rem;
+            margin-bottom: 1.4rem;
+        }
+
+        .info-row {
+            display: flex;
+            margin-bottom: 0.85rem;
+            font-size: 0.86rem;
+        }
+
+        .info-row .label {
+            width: 145px;
+            color: var(--gold);
+            font-weight: 700;
+            flex-shrink: 0;
+        }
+
+        .info-row .val {
+            color: #e2e8f0;
+            word-break: break-all;
+        }
+
+        .info-row .val a {
+            color: var(--cyan);
+            text-decoration: none;
+        }
+
+        /* Footer */
+        footer {
+            border-top: 1px solid var(--gold);
+            padding: 1.6rem 2rem;
+            text-align: center;
+            font-size: 0.82rem;
             color: #94a3b8;
-            line-height: 1.5;
+            background-color: #0b1019;
+            margin-top: 3.5rem;
+        }
+
+        /* Responsividad Móvil */
+        @media (max-width: 900px) {
+            .navbar {
+                padding: 1rem 1.5rem;
+            }
+            .inquiry-card {
+                grid-template-columns: 1fr;
+                gap: 2rem;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .navbar {
+                flex-direction: column;
+                gap: 0.65rem;
+                padding: 0.65rem 1rem;
+            }
+
+            .brand-container {
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                gap: 8px;
+                width: 100%;
+            }
+
+            .nav-logo {
+                width: 26px;
+                height: 26px;
+            }
+
+            .brand-title {
+                font-size: 0.88rem;
+                letter-spacing: 0.3px;
+                white-space: nowrap;
+            }
+
+            .nav-links {
+                display: flex;
+                gap: 1.5rem;
+                justify-content: center;
+                align-items: center;
+                width: 100%;
+                padding: 0.35rem 0.8rem;
+                background: rgba(255, 255, 255, 0.03);
+                border-radius: 20px;
+                border: 1px solid rgba(255, 255, 255, 0.05);
+            }
+
+            .nav-links a {
+                font-size: 0.78rem;
+                font-weight: 700;
+            }
+
+            .hero h1 {
+                font-size: 1.45rem;
+            }
+
+            .hero {
+                padding: 2.2rem 1rem 1.8rem;
+            }
+
+            .section-block {
+                padding: 1.2rem 1rem 1.8rem;
+            }
         }
     </style>
 </head>
 <body>
 
-    <!-- Header / Navbar -->
+    <!-- Top Navigation Bar -->
     <header>
-        <div class="brand-header">
-            <img src="logo.png" alt="GTS Logo">
-            <span>Global Trading Solutions LLC</span>
+        <div class="navbar">
+            <a href="#" class="brand-container">
+                <img src="icono.png" alt="Icono" class="nav-logo">
+                <span class="brand-title">Global Trading Solutions LLC</span>
+            </a>
+            <div class="nav-links">
+                <a href="#">Inicio</a>
+                <a href="#divisions">Divisiones</a>
+                <a href="#contact">Contacto</a>
+            </div>
         </div>
-        <nav>
-            <a href="#inicio">Inicio</a>
-            <a href="#divisiones" class="secondary">Divisiones</a>
-            <a href="#contacto" class="secondary">Contacto</a>
-        </nav>
     </header>
 
-    <!-- Hero Central -->
-    <main class="hero">
-        <div class="sphere-container">
-            <div class="orbit-ring"></div>
-            <div class="sphere"></div>
+    <main>
+        <!-- Hero Section con Degradado Fundido (Sin Línea) -->
+        <section class="hero">
+            <div class="hero-inner">
+                
+                <div class="sphere-stage">
+                    <div class="sphere-body"></div>
+                    <div class="sphere-ground-shadow"></div>
+                </div>
+
+                <h1>Global Trading Solutions LLC</h1>
+                <div class="hero-subtitle">Parent Entity | Commercial Trade | Portfolio Operations</div>
+                <p class="hero-desc">
+                    Parent holding entity directing commercial initiatives, direct-to-consumer e-commerce retail networks, and international supply chain governance with rigorous operational compliance.
+                </p>
+                <div class="quote-box">
+                    "Driving scalable value across digital commerce and strategic enterprise."
+                </div>
+            </div>
+        </section>
+
+        <!-- Section 1: Portfolio & Subsidiaries -->
+        <div class="section-block" id="divisions">
+            <div class="section-header">
+                <h2>Corporate Portfolio & Subsidiaries</h2>
+                <div class="accent-bar"></div>
+                <p>Commercial ventures and operational divisions managed under the parent structure of Global Trading Solutions LLC.</p>
+            </div>
+
+            <div class="grid-container">
+                <!-- Card 1 -->
+                <div class="card">
+                    <div class="badge-bar">
+                        <span class="badge">Consumer Division (DBA)</span>
+                        <span class="badge-icon">✨</span>
+                    </div>
+                    <h3>Vibe Beauty Brand</h3>
+                    <p>Direct-to-consumer e-commerce retail brand focused on curated cosmetics, premium skincare, and specialized hair care essentials.</p>
+                </div>
+
+                <!-- Card 2 -->
+                <div class="card">
+                    <div class="badge-bar">
+                        <span class="badge">Trade & Sourcing</span>
+                        <span class="badge-icon">🌐</span>
+                    </div>
+                    <h3>Commercial Sourcing & Logistics</h3>
+                    <p>International supplier vetting, commercial procurement, fulfillment logistics, and verified trade flow management.</p>
+                </div>
+
+                <!-- Card 3 -->
+                <div class="card">
+                    <div class="badge-bar">
+                        <span class="badge">Parent Governance</span>
+                        <span class="badge-icon">📊</span>
+                    </div>
+                    <h3>Strategic Portfolio Management</h3>
+                    <p>Standardized financial oversight, multi-brand incubation, legal entity compliance, and scalable operational frameworks.</p>
+                </div>
+            </div>
         </div>
 
-        <h1 class="hero-title">GLOBAL TRADING SOLUTIONS LLC</h1>
-        <p class="hero-subtitle">Parent Entity | Commercial Trade | Portfolio Operations</p>
+        <!-- Section 2: Core Strategic Capabilities -->
+        <div class="section-block">
+            <div class="section-header">
+                <h2>Core Strategic Capabilities</h2>
+                <div class="accent-bar"></div>
+                <p>Enterprise frameworks ensuring operational efficiency and commercial scalability.</p>
+            </div>
 
-        <div class="quote-box">
-            "Driving scalable value across digital commerce and strategic enterprise."
+            <div class="grid-container">
+                <!-- Card 4 -->
+                <div class="card">
+                    <div class="badge-bar">
+                        <span></span>
+                        <span class="badge-icon">🎯</span>
+                    </div>
+                    <h3>Multi-Brand Scaling</h3>
+                    <p>Incubating and deploying distinct commercial brands with verified direct-to-consumer digital channels.</p>
+                </div>
+
+                <!-- Card 5 -->
+                <div class="card">
+                    <div class="badge-bar">
+                        <span></span>
+                        <span class="badge-icon">📦</span>
+                    </div>
+                    <h3>Supply Chain Reliability</h3>
+                    <p>Strict quality assurance protocols, transparent logistics routing, and reliable vendor management.</p>
+                </div>
+
+                <!-- Card 6 -->
+                <div class="card">
+                    <div class="badge-bar">
+                        <span></span>
+                        <span class="badge-icon">⚖️</span>
+                    </div>
+                    <h3>Corporate Governance</h3>
+                    <p>Corporate records maintenance, standardized accounting compliance, and multi-tier operational control.</p>
+                </div>
+            </div>
+        </div>
+
+        <!-- Section 3: Official Inquiries & Channels -->
+        <div class="section-block" id="contact">
+            <div class="section-header">
+                <h2>Official Corporate Inquiries</h2>
+                <div class="accent-bar"></div>
+                <p>Official communication channel for commercial partnerships, banking, vendor inquiries, and institutional verification.</p>
+            </div>
+
+            <div class="inquiry-wrapper">
+                <div class="inquiry-card">
+                    <!-- Form Side -->
+                    <form action="mailto:contact@globaltradingsolutionsllc.com" method="POST" enctype="text/plain">
+                        <div class="form-group">
+                            <label>Company / Contact Name</label>
+                            <input type="text" placeholder="Your name or organization" required>
+                        </div>
+
+                        <div class="form-group">
+                            <label>Business Email</label>
+                            <input type="email" placeholder="corporate@domain.com" required>
+                        </div>
+
+                        <div class="form-group">
+                            <label>Department Target</label>
+                            <select>
+                                <option value="admin">Executive Administration (admin@globaltradingsolutionsllc.com)</option>
+                                <option value="contact">Operations & Sourcing (contact@globaltradingsolutionsllc.com)</option>
+                            </select>
+                        </div>
+
+                        <div class="form-group">
+                            <label>Inquiry Description</label>
+                            <textarea placeholder="Specify commercial, legal, or trade details..."></textarea>
+                        </div>
+
+                        <button type="submit" class="btn-submit">Submit Inquiry</button>
+                    </form>
+
+                    <!-- Entity Info Side -->
+                    <div class="verification-info">
+                        <h3>Entity Verification & Direct Channels</h3>
+                        <p class="info-sub">Direct communication channels for Global Trading Solutions LLC:</p>
+
+                        <div class="info-row">
+                            <span class="label">Parent Entity:</span>
+                            <span class="val">Global Trading Solutions LLC</span>
+                        </div>
+                        <div class="info-row">
+                            <span class="label">Administration:</span>
+                            <span class="val"><a href="mailto:admin@globaltradingsolutionsllc.com">admin@globaltradingsolutionsllc.com</a></span>
+                        </div>
+                        <div class="info-row">
+                            <span class="label">General Contact:</span>
+                            <span class="val"><a href="mailto:contact@globaltradingsolutionsllc.com">contact@globaltradingsolutionsllc.com</a></span>
+                        </div>
+                        <div class="info-row">
+                            <span class="label">Commercial Brand:</span>
+                            <span class="val">Vibe Beauty Brand</span>
+                        </div>
+                        <div class="info-row">
+                            <span class="label">Headquarters:</span>
+                            <span class="val">Indianapolis, Indiana, USA</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
         </div>
     </main>
 
-    <!-- Divisiones Corporativas -->
-    <section class="portfolio-section" id="divisiones">
-        <div class="section-header">CORPORATE PORTFOLIO & SUBSIDIARIES</div>
-        <div class="gradient-line"></div>
-
-        <div class="cards-grid">
-            <div class="card">
-                <span class="card-tag">CONSUMER DIVISION (DBA)</span>
-                <div class="card-title">Vibe Beauty Brand</div>
-                <p class="card-desc">E-commerce multicanal, productos de cuidado personal, cosméticos y logística directa al consumidor.</p>
-            </div>
-
-            <div class="card">
-                <span class="card-tag">TRADE & SOURCING</span>
-                <div class="card-title">Commercial Sourcing & Logistics</div>
-                <p class="card-desc">Gestión integral de suministros, comercio internacional y alianzas estratégicas de distribución.</p>
-            </div>
-
-            <div class="card">
-                <span class="card-tag">PARENT GOVERNANCE</span>
-                <div class="card-title">Parent Governance</div>
-                <p class="card-desc">Administración estratégica, cumplimiento normativo y consolidación financiera de la entidad matriz.</p>
-            </div>
-        </div>
-    </section>
+    <!-- Footer -->
+    <footer>
+        <p>&copy; 2026 Global Trading Solutions LLC. Scalable commerce, operational precision, and strategic brand management.</p>
+    </footer>
 
 </body>
 </html>
