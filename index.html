@@ -117,7 +117,7 @@
             padding: 4.5rem 2rem 4rem;
             text-align: center;
             margin-bottom: 2.5rem;
-            border-bottom: none; /* Cero líneas duras abajo */
+            border-bottom: none;
             box-shadow: none;
         }
 
@@ -133,9 +133,49 @@
             align-items: center;
             justify-content: center;
             margin: 0 auto 2.5rem;
-            width: 220px;
-            height: 240px;
+            width: 260px;
+            height: 260px;
+            position: relative;
+            perspective: 1000px;
             animation: floatSphere 4s ease-in-out infinite;
+        }
+
+        /* Cinturón / Anillo orbital 3D animado */
+        .orbit-ring {
+            position: absolute;
+            width: 270px;
+            height: 270px;
+            border-radius: 50%;
+            border: 3.5px solid var(--gold);
+            box-shadow: 
+                0 0 20px rgba(56, 189, 248, 0.8),
+                inset 0 0 15px rgba(56, 189, 248, 0.5);
+            transform: rotateX(75deg) rotateY(-20deg);
+            transform-style: preserve-3d;
+            pointer-events: none;
+            z-index: 5;
+            animation: rotateOrbitRing 8s linear infinite;
+        }
+
+        .orbit-ring::after {
+            content: '';
+            position: absolute;
+            top: -6px;
+            left: -6px;
+            right: -6px;
+            bottom: -6px;
+            border-radius: 50%;
+            border: 1.5px solid rgba(56, 189, 248, 0.7);
+            filter: blur(1px);
+        }
+
+        @keyframes rotateOrbitRing {
+            0% {
+                transform: rotateX(75deg) rotateY(-20deg) rotateZ(0deg);
+            }
+            100% {
+                transform: rotateX(75deg) rotateY(-20deg) rotateZ(360deg);
+            }
         }
 
         /* Esfera 3D con Aura Azul y giro ultra lento */
@@ -157,6 +197,7 @@
                 inset -25px -25px 45px rgba(0, 0, 0, 0.95),
                 inset 15px 15px 30px rgba(255, 255, 255, 0.25);
             border: none;
+            z-index: 2;
         }
 
         .sphere-body::after {
@@ -549,6 +590,7 @@
             <div class="hero-inner">
                 
                 <div class="sphere-stage">
+                    <div class="orbit-ring"></div>
                     <div class="sphere-body"></div>
                     <div class="sphere-ground-shadow"></div>
                 </div>
