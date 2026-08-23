@@ -9,30 +9,75 @@
             margin: 0;
             padding: 0;
             box-sizing: border-box;
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
         }
 
         body {
-            background-color: #080d14;
+            background-color: #060b13;
             color: #ffffff;
-            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            min-height: 100vh;
             display: flex;
             flex-direction: column;
-            align-items: center;
-            justify-content: center;
-            min-height: 100vh;
             overflow-x: hidden;
         }
 
-        .hero-container {
-            text-align: center;
-            padding: 2rem;
+        /* Navbar */
+        header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 1.2rem 3rem;
+            background: rgba(6, 11, 19, 0.95);
+            border-bottom: 1px solid rgba(255, 255, 255, 0.05);
         }
 
-        .sphere-wrapper {
+        .brand-header {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            font-size: 1.25rem;
+            font-weight: 700;
+            color: #f5eedc;
+        }
+
+        .brand-header img {
+            width: 38px;
+            height: 38px;
+            border-radius: 50%;
+        }
+
+        nav a {
+            color: #d4af37;
+            text-decoration: none;
+            margin-left: 2rem;
+            font-size: 0.95rem;
+            font-weight: 500;
+            transition: color 0.3s;
+        }
+
+        nav a.secondary {
+            color: #94a3b8;
+        }
+
+        nav a:hover {
+            color: #ffffff;
+        }
+
+        /* Hero Section */
+        .hero {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            text-align: center;
+            padding: 3rem 1.5rem 2rem 1.5rem;
+        }
+
+        /* Contenedor 3D de la Esfera y Cinturón */
+        .sphere-container {
             position: relative;
-            width: 320px;
-            height: 320px;
-            margin: 0 auto 2rem auto;
+            width: 280px;
+            height: 280px;
+            margin-bottom: 2rem;
             display: flex;
             justify-content: center;
             align-items: center;
@@ -43,23 +88,20 @@
             width: 220px;
             height: 220px;
             border-radius: 50%;
+            background: url('logo.png') center/cover no-repeat;
+            box-shadow: 0 0 45px rgba(0, 180, 255, 0.45), inset 0 0 25px rgba(0, 0, 0, 0.9);
             position: relative;
             z-index: 2;
-            background-image: url('logo.png');
-            background-size: cover;
-            background-position: center;
-            box-shadow: 0 0 40px rgba(0, 180, 255, 0.4), inset 0 0 25px rgba(0, 0, 0, 0.85);
         }
 
+        /* Cinturón / Anillo Orbital */
         .orbit-ring {
             position: absolute;
-            width: 340px;
-            height: 340px;
+            width: 320px;
+            height: 320px;
             border-radius: 50%;
-            border: 4px solid rgba(212, 175, 55, 0.85);
-            box-shadow: 
-                0 0 20px rgba(0, 195, 255, 0.7),
-                inset 0 0 15px rgba(0, 195, 255, 0.5);
+            border: 4px solid #d4af37;
+            box-shadow: 0 0 20px rgba(0, 195, 255, 0.8), inset 0 0 15px rgba(0, 195, 255, 0.6);
             transform: rotateX(75deg) rotateY(-20deg);
             transform-style: preserve-3d;
             pointer-events: none;
@@ -70,49 +112,179 @@
         .orbit-ring::after {
             content: '';
             position: absolute;
-            top: -8px;
-            left: -8px;
-            right: -8px;
-            bottom: -8px;
+            top: -6px;
+            left: -6px;
+            right: -6px;
+            bottom: -6px;
             border-radius: 50%;
-            border: 2px solid rgba(0, 212, 255, 0.6);
+            border: 2px solid rgba(0, 212, 255, 0.7);
             filter: blur(1px);
         }
 
         @keyframes orbitRotate {
-            0% {
-                transform: rotateX(75deg) rotateY(-20deg) rotateZ(0deg);
-            }
-            100% {
-                transform: rotateX(75deg) rotateY(-20deg) rotateZ(360deg);
-            }
+            0% { transform: rotateX(75deg) rotateY(-20deg) rotateZ(0deg); }
+            100% { transform: rotateX(75deg) rotateY(-20deg) rotateZ(360deg); }
         }
 
-        h1 {
+        .hero-title {
             font-size: 2.2rem;
-            letter-spacing: 1px;
-            background: linear-gradient(135deg, #f3e7c4 0%, #d4af37 100%);
+            font-weight: 800;
+            letter-spacing: 0.5px;
+            background: linear-gradient(180deg, #ffffff 0%, #d4af37 100%);
             -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;
+            margin-bottom: 0.75rem;
+        }
+
+        .hero-subtitle {
+            color: #00d4ff;
+            font-size: 0.9rem;
+            font-weight: 600;
+            letter-spacing: 1.5px;
+            text-transform: uppercase;
+            margin-bottom: 1.25rem;
+        }
+
+        .quote-box {
+            background: rgba(14, 23, 38, 0.7);
+            border: 1px solid rgba(212, 175, 55, 0.3);
+            border-radius: 6px;
+            padding: 0.8rem 1.8rem;
+            color: #d4af37;
+            font-style: italic;
+            font-size: 0.95rem;
+            max-width: 650px;
+        }
+
+        /* Portfolio Section */
+        .portfolio-section {
+            max-width: 1200px;
+            margin: 2rem auto;
+            padding: 0 1.5rem;
+            text-align: center;
+        }
+
+        .section-header {
+            font-size: 1.1rem;
+            font-weight: 700;
+            letter-spacing: 2px;
+            color: #f3e7c4;
+            text-transform: uppercase;
+            margin-bottom: 0.8rem;
+        }
+
+        .gradient-line {
+            height: 4px;
+            width: 320px;
+            margin: 0 auto 2.5rem auto;
+            background: linear-gradient(90deg, #9d4edd 0%, #00d4ff 50%, #ff4d6d 100%);
+            border-radius: 2px;
+        }
+
+        /* Cards Grid */
+        .cards-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 1.5rem;
+            text-align: left;
+        }
+
+        .card {
+            background: rgba(10, 18, 30, 0.8);
+            border: 1px solid rgba(0, 180, 255, 0.15);
+            border-radius: 12px;
+            padding: 1.5rem;
+            transition: transform 0.3s, border-color 0.3s;
+        }
+
+        .card:hover {
+            transform: translateY(-4px);
+            border-color: rgba(212, 175, 55, 0.4);
+        }
+
+        .card-tag {
+            display: inline-block;
+            font-size: 0.7rem;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            color: #00d4ff;
+            background: rgba(0, 212, 255, 0.1);
+            border: 1px solid rgba(0, 212, 255, 0.25);
+            padding: 4px 8px;
+            border-radius: 4px;
+            margin-bottom: 1rem;
+        }
+
+        .card-title {
+            font-size: 1.15rem;
+            font-weight: 700;
+            color: #ffffff;
             margin-bottom: 0.5rem;
         }
 
-        p {
-            color: #00d4ff;
-            font-size: 0.95rem;
-            letter-spacing: 2px;
-            text-transform: uppercase;
+        .card-desc {
+            font-size: 0.85rem;
+            color: #94a3b8;
+            line-height: 1.5;
         }
     </style>
 </head>
 <body>
-    <div class="hero-container">
-        <div class="sphere-wrapper">
+
+    <!-- Header / Navbar -->
+    <header>
+        <div class="brand-header">
+            <img src="logo.png" alt="GTS Logo">
+            <span>Global Trading Solutions LLC</span>
+        </div>
+        <nav>
+            <a href="#inicio">Inicio</a>
+            <a href="#divisiones" class="secondary">Divisiones</a>
+            <a href="#contacto" class="secondary">Contacto</a>
+        </nav>
+    </header>
+
+    <!-- Hero Central -->
+    <main class="hero">
+        <div class="sphere-container">
             <div class="orbit-ring"></div>
             <div class="sphere"></div>
         </div>
-        <h1>Global Trading Solutions LLC</h1>
-        <p>Parent Entity | Commercial Trade | Portfolio Operations</p>
-    </div>
+
+        <h1 class="hero-title">GLOBAL TRADING SOLUTIONS LLC</h1>
+        <p class="hero-subtitle">Parent Entity | Commercial Trade | Portfolio Operations</p>
+
+        <div class="quote-box">
+            "Driving scalable value across digital commerce and strategic enterprise."
+        </div>
+    </main>
+
+    <!-- Divisiones Corporativas -->
+    <section class="portfolio-section" id="divisiones">
+        <div class="section-header">CORPORATE PORTFOLIO & SUBSIDIARIES</div>
+        <div class="gradient-line"></div>
+
+        <div class="cards-grid">
+            <div class="card">
+                <span class="card-tag">CONSUMER DIVISION (DBA)</span>
+                <div class="card-title">Vibe Beauty Brand</div>
+                <p class="card-desc">E-commerce multicanal, productos de cuidado personal, cosméticos y logística directa al consumidor.</p>
+            </div>
+
+            <div class="card">
+                <span class="card-tag">TRADE & SOURCING</span>
+                <div class="card-title">Commercial Sourcing & Logistics</div>
+                <p class="card-desc">Gestión integral de suministros, comercio internacional y alianzas estratégicas de distribución.</p>
+            </div>
+
+            <div class="card">
+                <span class="card-tag">PARENT GOVERNANCE</span>
+                <div class="card-title">Parent Governance</div>
+                <p class="card-desc">Administración estratégica, cumplimiento normativo y consolidación financiera de la entidad matriz.</p>
+            </div>
+        </div>
+    </section>
+
 </body>
 </html>
