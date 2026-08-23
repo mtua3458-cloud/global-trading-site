@@ -112,7 +112,7 @@
             margin: 0 auto;
         }
 
-        /* ESCENARIO 3D: Esfera sólida que flota y sobresale */
+        /* Escenario de la esfera flotante */
         .sphere-stage {
             display: flex;
             flex-direction: column;
@@ -124,15 +124,20 @@
             animation: floatSphere 4s ease-in-out infinite;
         }
 
-        /* Esfera 3D real con relieve óptico y volumen */
+        /* Esfera 3D con textura continua */
         .sphere-body {
             width: 185px;
             height: 185px;
             border-radius: 50%;
             position: relative;
             overflow: hidden;
-            background: #080d14;
-            /* Sombra y luz esférica profunda que le da volumen sólido saliendo de la pantalla */
+            background-color: #080d14;
+            background-image: url('logo.png');
+            background-size: cover;
+            background-repeat: repeat-x;
+            /* Giro de textura continua de planeta */
+            animation: rotatePlanetTexture 18s linear infinite;
+            /* Sombra y luz esférica profunda */
             box-shadow: 
                 0 25px 50px rgba(0, 0, 0, 0.9),
                 0 0 35px rgba(56, 189, 248, 0.4),
@@ -141,28 +146,18 @@
             border: none;
         }
 
-        /* Capa de brillo y sombra de curvatura de planeta */
+        /* Capa de volumen y curvatura esférica */
         .sphere-body::after {
             content: '';
             position: absolute;
             top: 0; left: 0; width: 100%; height: 100%;
             border-radius: 50%;
-            background: radial-gradient(circle at 30% 30%, rgba(255,255,255,0.2) 0%, rgba(0,0,0,0) 60%, rgba(0,0,0,0.9) 100%);
+            background: radial-gradient(circle at 30% 30%, rgba(255,255,255,0.25) 0%, rgba(0,0,0,0) 55%, rgba(0,0,0,0.92) 100%);
             pointer-events: none;
             z-index: 3;
         }
 
-        /* Textura interna rotando en 3D sobre la esfera */
-        .sphere-texture {
-            width: 100%;
-            height: 100%;
-            object-fit: cover;
-            border-radius: 50%;
-            animation: spinSphere 12s linear infinite;
-            transform-style: preserve-3d;
-        }
-
-        /* Sombra en el suelo para el efecto de flotar */
+        /* Sombra inferior de suelo */
         .sphere-ground-shadow {
             width: 130px;
             height: 16px;
@@ -172,13 +167,13 @@
             animation: shadowPulse 4s ease-in-out infinite;
         }
 
-        /* Animación de rotación */
-        @keyframes spinSphere {
-            0% { transform: rotateY(0deg); }
-            100% { transform: rotateY(360deg); }
+        /* Giro de textura de planeta (sin aplastarse como moneda) */
+        @keyframes rotatePlanetTexture {
+            0% { background-position: 0 0; }
+            100% { background-position: 1000px 0; }
         }
 
-        /* Animación de levitación y flotado 3D */
+        /* Levitación */
         @keyframes floatSphere {
             0%, 100% {
                 transform: translateY(0px) scale(1);
@@ -188,7 +183,7 @@
             }
         }
 
-        /* Animación de la sombra en el piso */
+        /* Sombra dinámica */
         @keyframes shadowPulse {
             0%, 100% {
                 transform: scale(1);
@@ -482,14 +477,12 @@
     </header>
 
     <main>
-        <!-- Hero Section con Esfera 3D Flotante -->
+        <!-- Hero Section con Esfera 3D Planeta -->
         <section class="hero">
             <div class="hero-inner">
                 
                 <div class="sphere-stage">
-                    <div class="sphere-body">
-                        <img src="logo.png" alt="Global Trading Solutions LLC Globe Logo" class="sphere-texture">
-                    </div>
+                    <div class="sphere-body"></div>
                     <div class="sphere-ground-shadow"></div>
                 </div>
 
