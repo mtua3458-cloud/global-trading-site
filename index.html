@@ -13,7 +13,7 @@
             --bg-body: #0d121c;
             --bg-card: #151f2e;
             --gold: #f4c453;
-            --cyan: #38bdf8;
+            --cyan: #00d4ff;
             --badge-bg: #0c334d;
             --badge-border: #145374;
             --text-white: #ffffff;
@@ -36,7 +36,7 @@
             line-height: 1.5;
         }
 
-        /* Top Header con línea divisoria plateada tenue */
+        /* Top Header */
         header {
             position: sticky;
             top: 0;
@@ -111,7 +111,7 @@
             border-radius: 2px;
         }
 
-        /* Hero Section con degradado puro */
+        /* Hero Section */
         .hero {
             background: linear-gradient(180deg, #151f2e 0%, #111a28 35%, #0d121c 100%);
             padding: 4.5rem 2rem 4rem;
@@ -133,12 +133,85 @@
             align-items: center;
             justify-content: center;
             margin: 0 auto 2.5rem;
-            width: 220px;
-            height: 240px;
+            width: 300px;
+            height: 300px;
+            position: relative;
+            perspective: 1200px;
             animation: floatSphere 4s ease-in-out infinite;
         }
 
-        /* Esfera 3D FIJA con su Aura Azul y sombras */
+        .orbit-system {
+            position: relative;
+            width: 195px;
+            height: 195px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transform-style: preserve-3d;
+        }
+
+        /* Inclinación 3D del Cinturón */
+        .orbit-tilt {
+            position: absolute;
+            width: 305px;
+            height: 305px;
+            transform: rotateX(72deg) rotateY(-18deg);
+            transform-style: preserve-3d;
+            pointer-events: none;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            z-index: 4;
+        }
+
+        /* 1. Aro Azul Chillón Grueso */
+        .orbit-blue-main {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            border-radius: 50%;
+            padding: 6px;
+            background: conic-gradient(
+                from 0deg,
+                #00f0ff 0%,
+                #0088ff 25%,
+                rgba(0, 240, 255, 0.2) 50%,
+                #0088ff 75%,
+                #00f0ff 100%
+            );
+            -webkit-mask: radial-gradient(farthest-side, transparent calc(100% - 6px), #fff calc(100% - 5px));
+            mask: radial-gradient(farthest-side, transparent calc(100% - 6px), #fff calc(100% - 5px));
+            box-shadow: 0 0 28px rgba(0, 212, 255, 0.95);
+            animation: spinRing 4s linear infinite;
+        }
+
+        /* 2. Aro Dorado Fino Interno */
+        .orbit-gold-inner {
+            position: absolute;
+            width: calc(100% - 14px);
+            height: calc(100% - 14px);
+            border-radius: 50%;
+            padding: 2.5px;
+            background: conic-gradient(
+                from 180deg,
+                #fff2a8 0%,
+                #d4af37 35%,
+                rgba(212, 175, 55, 0.15) 60%,
+                #d4af37 85%,
+                #fff2a8 100%
+            );
+            -webkit-mask: radial-gradient(farthest-side, transparent calc(100% - 2.5px), #fff calc(100% - 2px));
+            mask: radial-gradient(farthest-side, transparent calc(100% - 2.5px), #fff calc(100% - 2px));
+            box-shadow: 0 0 10px rgba(244, 196, 83, 0.7);
+            animation: spinRing 4s linear infinite;
+        }
+
+        @keyframes spinRing {
+            0% { transform: rotate(0deg); }
+            100% { transform: rotate(360deg); }
+        }
+
+        /* Esfera 3D con Aura Azul fija */
         .sphere-body {
             width: 195px;
             height: 195px;
@@ -157,6 +230,7 @@
                 inset -25px -25px 45px rgba(0, 0, 0, 0.95),
                 inset 15px 15px 30px rgba(255, 255, 255, 0.25);
             border: none;
+            z-index: 2;
         }
 
         .sphere-body::after {
@@ -169,20 +243,19 @@
             z-index: 5;
         }
 
-        /* Elemento interior que da vueltas como moneda en 3D */
+        /* La imagen/contenido interior dando vueltas como una moneda */
         .coin-inner-wrapper {
-            width: 140px;
-            height: 140px;
+            width: 135px;
+            height: 135px;
             display: flex;
             align-items: center;
             justify-content: center;
             position: relative;
-            z-index: 4;
+            z-index: 3;
             transform-style: preserve-3d;
             animation: coinSpin3D 5s linear infinite;
         }
 
-        /* Soporte tanto para imagen recortada como para signo */
         .coin-graphic {
             max-width: 100%;
             max-height: 100%;
@@ -193,14 +266,13 @@
 
         .dollar-symbol {
             color: var(--gold);
-            font-size: 6.2rem;
+            font-size: 5.8rem;
             font-weight: 900;
             line-height: 1;
             user-select: none;
             filter: drop-shadow(0 4px 10px rgba(0, 0, 0, 0.7));
         }
 
-        /* Giro 3D como moneda sobre el eje vertical Y */
         @keyframes coinSpin3D {
             0% {
                 transform: rotateY(0deg);
@@ -215,7 +287,7 @@
             height: 16px;
             background: radial-gradient(ellipse at center, rgba(0, 150, 255, 0.35) 0%, rgba(0, 0, 0, 0.8) 40%, rgba(0, 0, 0, 0) 70%);
             border-radius: 50%;
-            margin-top: 10px;
+            margin-top: 15px;
             animation: shadowPulse 4s ease-in-out infinite;
         }
 
@@ -580,17 +652,23 @@
     </header>
 
     <main>
-        <!-- Hero Section con Degradado Fundido (Sin Línea) -->
+        <!-- Hero Section -->
         <section class="hero">
             <div class="hero-inner">
                 
                 <div class="sphere-stage">
-                    <div class="sphere-body">
-                        <!-- El contenedor interno gira como moneda 3D sobre el eje Y -->
-                        <div class="coin-inner-wrapper">
-                            <span class="dollar-symbol">$</span>
-                            <!-- Si prefieres usar la imagen PNG en vez de texto, sustituye por: 
-                            <img src="logo.png" alt="Coin Graphic" class="coin-graphic"> -->
+                    <div class="orbit-system">
+                        <!-- Aro Doble Exterior Giratorio -->
+                        <div class="orbit-tilt">
+                            <div class="orbit-blue-main"></div>
+                            <div class="orbit-gold-inner"></div>
+                        </div>
+                        
+                        <!-- Esfera con contenido interior que gira como moneda 3D -->
+                        <div class="sphere-body">
+                            <div class="coin-inner-wrapper">
+                                <img src="logo.png" alt="Logo Graphic" class="coin-graphic">
+                            </div>
                         </div>
                     </div>
                     <div class="sphere-ground-shadow"></div>
