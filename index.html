@@ -43,11 +43,10 @@
             background: rgba(13, 18, 28, 0.96);
             backdrop-filter: blur(14px);
             z-index: 1000;
-            border-bottom: 1px solid rgba(226, 232, 240, 0.18); /* Línea plateada sutil */
+            border-bottom: 1px solid rgba(226, 232, 240, 0.18);
             width: 100%;
         }
 
-        /* Barra distribuida de extremo a extremo */
         .navbar {
             max-width: 100%;
             margin: 0;
@@ -87,22 +86,23 @@
             align-items: center;
         }
 
+        /* Estilo general y fluido para los enlaces (sin quedarse pegados) */
         .nav-links a {
-            color: #cbd5e1; /* Plateado suave para los links */
+            color: #cbd5e1;
             text-decoration: none;
             font-size: 1.05rem;
             font-weight: 700;
             position: relative;
             padding: 6px 0;
-            transition: color 0.2s;
+            transition: color 0.25s ease;
         }
 
-        .nav-links a:hover,
-        .nav-links a.active {
+        .nav-links a:hover {
             color: var(--gold);
         }
 
-        .nav-links a.active::after {
+        /* Solo se ilumina si pasa el ratón o si el usuario está explícitamente ahí */
+        .nav-links a:hover::after {
             content: '';
             position: absolute;
             bottom: -2px;
@@ -537,7 +537,7 @@
                 <span class="brand-title">Global Trading Solutions LLC</span>
             </a>
             <div class="nav-links">
-                <a href="#" class="active">Inicio</a>
+                <a href="#">Inicio</a>
                 <a href="#divisions">Divisiones</a>
                 <a href="#contact">Contacto</a>
             </div>
