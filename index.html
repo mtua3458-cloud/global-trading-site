@@ -14,7 +14,6 @@
             --bg-card: #151f2e;
             --gold: #f4c453;
             --cyan: #38bdf8;
-            --cyan-line: #00e5ff;
             --badge-bg: #0c334d;
             --badge-border: #145374;
             --text-white: #ffffff;
@@ -37,20 +36,19 @@
             line-height: 1.5;
         }
 
-        /* Top Header */
+        /* Top Header - Sin línea divisoria */
         header {
             position: sticky;
             top: 0;
             background: rgba(13, 18, 28, 0.95);
             backdrop-filter: blur(10px);
-            border-bottom: 2px solid var(--cyan-line);
             z-index: 1000;
         }
 
         .navbar {
             max-width: 1200px;
             margin: 0 auto;
-            padding: 0.75rem 2rem;
+            padding: 0.85rem 2rem;
             display: flex;
             justify-content: space-between;
             align-items: center;
@@ -63,12 +61,12 @@
             text-decoration: none;
         }
 
+        /* Logo de la esquina sin borde dorado */
         .nav-logo {
             width: 32px;
             height: 32px;
             object-fit: cover;
             border-radius: 50%;
-            border: 1px solid var(--gold);
         }
 
         .brand-title {
@@ -115,16 +113,16 @@
             margin: 0 auto;
         }
 
+        /* Logo central: un poco más grande (160px) y sin borde dorado */
         .globe-wrapper {
             margin: 0 auto 1.5rem;
             display: inline-block;
             perspective: 1000px;
-            width: 135px;
-            height: 135px;
+            width: 160px;
+            height: 160px;
             border-radius: 50%;
             overflow: hidden;
-            box-shadow: 0 0 30px rgba(56, 189, 248, 0.4);
-            border: 2px solid rgba(244, 196, 83, 0.4);
+            box-shadow: 0 0 35px rgba(56, 189, 248, 0.35);
         }
 
         .globe-img {
@@ -199,7 +197,7 @@
             margin-bottom: 0.2rem;
         }
 
-        /* Rayita de múltiples colores (Rojo, Amarillo, Verde, Azul intenso) */
+        /* Rayita multicolor */
         .accent-bar {
             width: 55px;
             height: 4px;
