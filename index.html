@@ -21,7 +21,6 @@
             --text-muted: #94a3b8;
             --input-bg: #0b1019;
             --border-card: rgba(255, 255, 255, 0.08);
-            --section-border: rgba(255, 255, 255, 0.06);
         }
 
         * {
@@ -102,13 +101,13 @@
             background-color: var(--cyan);
         }
 
-        /* Hero Section with Card Background */
+        /* Hero Section */
         .hero {
             background-color: var(--bg-card);
-            border-bottom: 2px solid var(--cyan-line);
             padding: 3.5rem 2rem 3rem;
             text-align: center;
-            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+            margin-bottom: 2.5rem;
         }
 
         .hero-inner {
@@ -182,8 +181,7 @@
 
         /* Section Container & Title */
         .section-block {
-            border-bottom: 1px solid var(--section-border);
-            padding: 2.5rem 2rem 3rem;
+            padding: 1.5rem 2rem 2.5rem;
         }
 
         .section-header {
@@ -201,12 +199,13 @@
             margin-bottom: 0.2rem;
         }
 
+        /* Rayita de múltiples colores (Rojo, Amarillo, Verde, Azul intenso) */
         .accent-bar {
-            width: 48px;
-            height: 3.5px;
-            margin: 0.35rem auto 0.7rem;
-            border-radius: 2px;
-            background: linear-gradient(to right, var(--gold) 50%, var(--cyan) 50%);
+            width: 55px;
+            height: 4px;
+            margin: 0.4rem auto 0.75rem;
+            border-radius: 3px;
+            background: linear-gradient(to right, #ff3b30, #ff9500, #ffcc00, #34c759, #00c7be, #007aff, #af52de);
         }
 
         .section-header p {
@@ -395,6 +394,7 @@
             font-size: 0.8rem;
             color: #94a3b8;
             background-color: #0b1019;
+            margin-top: 3rem;
         }
 
         @media (max-width: 900px) {
@@ -423,7 +423,7 @@
     </header>
 
     <main>
-        <!-- Hero Section with Card Background Color -->
+        <!-- Hero Section -->
         <section class="hero">
             <div class="hero-inner">
                 <div class="globe-wrapper">
