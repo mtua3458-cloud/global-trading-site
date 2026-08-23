@@ -112,7 +112,7 @@
             margin: 0 auto;
         }
 
-        /* Escenario de flotación completa */
+        /* Escenario de flotación */
         .sphere-stage {
             display: flex;
             flex-direction: column;
@@ -124,7 +124,7 @@
             animation: floatSphere 4s ease-in-out infinite;
         }
 
-        /* Esfera 3D con giro pausado, continuo y ultra lento */
+        /* Esfera 3D con Aura Azul y giro ultra lento (90 segundos) */
         .sphere-body {
             width: 185px;
             height: 185px;
@@ -135,17 +135,18 @@
             background-image: url('logo.png');
             background-size: cover;
             background-repeat: repeat-x;
-            /* Giro suave a 45 segundos por vuelta para leerlo con calma */
-            animation: rotatePlanetTexture 45s linear infinite;
+            animation: rotatePlanetTexture 90s linear infinite;
+            /* Aura azul eléctrica exterior envolvente */
             box-shadow: 
+                0 0 50px rgba(0, 210, 255, 0.55),
+                0 0 90px rgba(0, 140, 255, 0.35),
                 0 25px 50px rgba(0, 0, 0, 0.9),
-                0 0 35px rgba(56, 189, 248, 0.4),
                 inset -25px -25px 45px rgba(0, 0, 0, 0.95),
                 inset 15px 15px 30px rgba(255, 255, 255, 0.25);
             border: none;
         }
 
-        /* Capa de volumen y curvatura esférica */
+        /* Capa de curvatura y brillo esférico */
         .sphere-body::after {
             content: '';
             position: absolute;
@@ -156,23 +157,21 @@
             z-index: 3;
         }
 
-        /* Sombra reactiva en el suelo */
+        /* Sombra en el piso con tinte del resplandor */
         .sphere-ground-shadow {
             width: 130px;
             height: 16px;
-            background: radial-gradient(ellipse at center, rgba(0, 0, 0, 0.8) 0%, rgba(0, 0, 0, 0) 70%);
+            background: radial-gradient(ellipse at center, rgba(0, 150, 255, 0.35) 0%, rgba(0, 0, 0, 0.8) 40%, rgba(0, 0, 0, 0) 70%);
             border-radius: 50%;
             margin-top: 10px;
             animation: shadowPulse 4s ease-in-out infinite;
         }
 
-        /* Animación de desplazamiento continuo sin cortes */
         @keyframes rotatePlanetTexture {
             0% { background-position: 0 0; }
             100% { background-position: 1850px 0; }
         }
 
-        /* Levitación y flotado 3D */
         @keyframes floatSphere {
             0%, 100% {
                 transform: translateY(0px) scale(1);
@@ -182,15 +181,14 @@
             }
         }
 
-        /* Sombra dinámica */
         @keyframes shadowPulse {
             0%, 100% {
                 transform: scale(1);
-                opacity: 0.8;
+                opacity: 0.9;
             }
             50% {
                 transform: scale(0.75);
-                opacity: 0.4;
+                opacity: 0.45;
             }
         }
 
@@ -252,7 +250,6 @@
             margin-bottom: 0.2rem;
         }
 
-        /* Rayita multicolor */
         .accent-bar {
             width: 55px;
             height: 4px;
