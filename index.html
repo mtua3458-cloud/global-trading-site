@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Global Trading Solutions LLC | Corporate Parent Entity</title>
-    <link rel="icon" type="image/png" href="logo.png">
+    <link rel="icon" type="image/png" href="icono.png">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
@@ -61,11 +61,11 @@
             text-decoration: none;
         }
 
-        /* Logo de la esquina (puedes usar un ícono limpio solo de símbolo) */
+        /* Icono en la esquina superior */
         .nav-logo {
             width: 36px;
             height: 36px;
-            object-fit: contain;
+            object-fit: cover;
             border-radius: 50%;
         }
 
@@ -113,29 +113,30 @@
             margin: 0 auto;
         }
 
-        /* Logo central con efecto Esfera 3D real */
+        /* LOGO CENTRAL CON EFECTO ESFERA 3D REAL (Volumen y relieve) */
         .globe-wrapper {
             margin: 0 auto 1.5rem;
             display: inline-block;
-            perspective: 1000px;
-            width: 165px;
-            height: 165px;
+            perspective: 1200px;
+            width: 170px;
+            height: 170px;
             border-radius: 50%;
             overflow: hidden;
             position: relative;
-            box-shadow: inset -15px -15px 30px rgba(0, 0, 0, 0.7),
-                        inset 10px 10px 25px rgba(255, 255, 255, 0.25),
-                        0 0 40px rgba(56, 189, 248, 0.4);
-            border: 1px solid rgba(255, 255, 255, 0.15);
+            /* Sombra interna curva y brillo exterior para dar efecto 3D esférico */
+            box-shadow: inset -20px -20px 35px rgba(0, 0, 0, 0.85),
+                        inset 12px 12px 30px rgba(255, 255, 255, 0.2),
+                        0 0 45px rgba(56, 189, 248, 0.4);
+            border: 2px solid rgba(244, 196, 83, 0.3);
         }
 
-        /* Sombra interna curva que le da volumen esférico */
+        /* Sombra superior para simular curvatura redonda */
         .globe-wrapper::after {
             content: '';
             position: absolute;
             top: 0; left: 0; width: 100%; height: 100%;
             border-radius: 50%;
-            box-shadow: inset 0 0 25px rgba(0, 0, 0, 0.8);
+            box-shadow: inset 0 0 30px rgba(0, 0, 0, 0.9);
             pointer-events: none;
             z-index: 2;
         }
@@ -371,7 +372,6 @@
         }
 
         .verification-info .info-sub {
-            content: '';
             color: var(--text-muted);
             font-size: 0.8rem;
             margin-bottom: 1.3rem;
@@ -425,8 +425,7 @@
     <header>
         <div class="navbar">
             <a href="#" class="brand-container">
-                <!-- Nota: Si prefieres un icono solo de símbolo arriba, puedes subir un archivo llamado icono.png y cambiar src="logo.png" por src="icono.png" -->
-                <img src="logo.png" alt="Logo" class="nav-logo">
+                <img src="icono.png" alt="Icono" class="nav-logo">
                 <span class="brand-title">Global Trading Solutions LLC</span>
             </a>
             <div class="nav-links">
