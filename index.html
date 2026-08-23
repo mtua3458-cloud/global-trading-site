@@ -1,0 +1,598 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0">
+    <title>Global Trading Solutions LLC | Strategic Management & Corporate Portfolio</title>
+    <style>
+        :root {
+            --bg-night: #050b14;
+            --bg-surface: #0a1322;
+            --accent-cyan: #00d2ff;
+            --accent-cyan-glow: rgba(0, 210, 255, 0.25);
+            --gold-primary: #e2b157;
+            --gold-light: #f3ce7a;
+            --gold-glow: rgba(226, 177, 87, 0.2);
+            --text-main: #f1f5f9;
+            --text-muted: #94a3b8;
+            --border-subtle: #1e293b;
+            --card-bg: #0d1829;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', -apple-system, BlinkMacSystemFont, Roboto, Helvetica, Arial, sans-serif;
+            scroll-behavior: smooth;
+        }
+
+        body {
+            background-color: var(--bg-night);
+            color: var(--text-main);
+            line-height: 1.6;
+            overflow-x: hidden;
+            width: 100%;
+        }
+
+        /* Top Navigation */
+        nav {
+            background-color: var(--bg-night);
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 0 5%;
+            min-height: 70px;
+            border-bottom: 2px solid var(--accent-cyan);
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+        }
+
+        .nav-brand {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            font-weight: 700;
+            font-size: 1.05rem;
+            letter-spacing: 0.5px;
+            color: var(--gold-light);
+            text-decoration: none;
+        }
+
+        .nav-logo-img {
+            height: 44px;
+            width: 44px;
+            border-radius: 50%;
+            object-fit: cover;
+            border: 1.5px solid var(--accent-cyan);
+            box-shadow: 0 0 12px var(--accent-cyan-glow);
+        }
+
+        .nav-links {
+            display: flex;
+            list-style: none;
+            height: 100%;
+            gap: 5px;
+        }
+
+        .nav-links li a {
+            color: var(--text-muted);
+            text-decoration: none;
+            font-size: 0.9rem;
+            font-weight: 600;
+            padding: 24px 14px;
+            display: flex;
+            align-items: center;
+            transition: all 0.2s ease;
+            position: relative;
+        }
+
+        .nav-links li a:hover, .nav-links li a.active {
+            color: var(--gold-light);
+        }
+
+        .nav-links li a.active::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 10%;
+            width: 80%;
+            height: 3px;
+            background-color: var(--accent-cyan);
+            border-radius: 2px 2px 0 0;
+            box-shadow: 0 0 8px var(--accent-cyan);
+        }
+
+        /* Hero Header */
+        header {
+            background: radial-gradient(circle at center, #0f1d33 0%, var(--bg-night) 100%);
+            color: #ffffff;
+            text-align: center;
+            padding: 55px 20px 70px;
+            border-bottom: 1px solid var(--border-subtle);
+        }
+
+        .hero-logo-center {
+            width: 145px;
+            height: 145px;
+            margin: 0 auto 22px;
+            border-radius: 50%;
+            padding: 4px;
+            background: linear-gradient(135deg, var(--accent-cyan), var(--gold-primary));
+            box-shadow: 0 0 30px var(--accent-cyan-glow);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .hero-logo-center img {
+            width: 100%;
+            height: 100%;
+            border-radius: 50%;
+            object-fit: cover;
+            display: block;
+        }
+
+        header h1 {
+            font-size: clamp(1.7rem, 4.5vw, 2.5rem);
+            font-weight: 800;
+            letter-spacing: 2px;
+            text-transform: uppercase;
+            margin-bottom: 10px;
+            color: var(--gold-light);
+            text-shadow: 0 2px 10px rgba(0, 0, 0, 0.5);
+        }
+
+        .hero-tagline {
+            color: var(--accent-cyan);
+            font-weight: 700;
+            font-size: clamp(0.85rem, 2vw, 1rem);
+            letter-spacing: 2.5px;
+            text-transform: uppercase;
+            margin-bottom: 20px;
+        }
+
+        .hero-desc {
+            max-width: 760px;
+            margin: 0 auto 25px;
+            font-size: clamp(0.95rem, 2vw, 1.05rem);
+            color: var(--text-muted);
+            font-weight: 300;
+            padding: 0 10px;
+        }
+
+        .quote-badge {
+            display: inline-block;
+            background: rgba(226, 177, 87, 0.05);
+            border-left: 3px solid var(--gold-primary);
+            padding: 10px 22px;
+            font-style: italic;
+            font-size: 0.9rem;
+            color: var(--gold-light);
+            border-radius: 0 4px 4px 0;
+            max-width: 90%;
+        }
+
+        /* Container & Sections */
+        .container {
+            max-width: 1100px;
+            margin: 0 auto;
+            padding: 45px 20px;
+        }
+
+        .section-header {
+            text-align: center;
+            margin-bottom: 40px;
+        }
+
+        .section-header h2 {
+            font-size: clamp(1.3rem, 3vw, 1.65rem);
+            font-weight: 800;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            color: var(--gold-light);
+            margin-bottom: 8px;
+            position: relative;
+            display: inline-block;
+        }
+
+        .section-header h2::after {
+            content: '';
+            display: block;
+            width: 50px;
+            height: 3px;
+            background: linear-gradient(90deg, var(--gold-primary), var(--accent-cyan));
+            margin: 8px auto 0;
+            border-radius: 2px;
+        }
+
+        .section-header p {
+            color: var(--text-muted);
+            max-width: 650px;
+            margin: 12px auto 0;
+            font-size: 0.9rem;
+            padding: 0 10px;
+        }
+
+        /* Cards Grid */
+        .cards-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 22px;
+            margin-bottom: 50px;
+        }
+
+        .card {
+            background: var(--card-bg);
+            border: 1px solid var(--border-subtle);
+            border-radius: 10px;
+            padding: 28px 22px;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+            transition: all 0.25s ease;
+        }
+
+        .card:hover {
+            transform: translateY(-4px);
+            border-color: var(--accent-cyan);
+            box-shadow: 0 8px 25px var(--accent-cyan-glow);
+        }
+
+        .card-icon {
+            font-size: 1.7rem;
+            margin-bottom: 14px;
+            display: inline-block;
+        }
+
+        .card h3 {
+            font-size: 1.18rem;
+            color: var(--gold-light);
+            margin-bottom: 10px;
+            font-weight: 700;
+        }
+
+        .card p {
+            font-size: 0.88rem;
+            color: var(--text-muted);
+            line-height: 1.55;
+        }
+
+        .badge-brand {
+            display: inline-block;
+            background-color: rgba(0, 210, 255, 0.1);
+            color: var(--accent-cyan);
+            border: 1px solid rgba(0, 210, 255, 0.2);
+            padding: 3px 8px;
+            border-radius: 4px;
+            font-size: 0.7rem;
+            font-weight: 700;
+            text-transform: uppercase;
+            margin-bottom: 12px;
+        }
+
+        /* Contact Section */
+        .contact-card {
+            background: var(--card-bg);
+            border: 1px solid var(--border-subtle);
+            border-radius: 10px;
+            padding: 35px;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+            display: grid;
+            grid-template-columns: 1.2fr 1fr;
+            gap: 35px;
+        }
+
+        .form-group {
+            margin-bottom: 16px;
+        }
+
+        .form-group label {
+            display: block;
+            font-size: 0.83rem;
+            font-weight: 600;
+            color: var(--gold-light);
+            margin-bottom: 6px;
+        }
+
+        .form-control {
+            width: 100%;
+            padding: 11px 14px;
+            border: 1px solid var(--border-subtle);
+            border-radius: 6px;
+            font-size: 0.88rem;
+            background-color: var(--bg-surface);
+            color: var(--text-main);
+            outline: none;
+            transition: all 0.2s ease;
+        }
+
+        .form-control:focus {
+            border-color: var(--accent-cyan);
+            box-shadow: 0 0 10px var(--accent-cyan-glow);
+        }
+
+        textarea.form-control {
+            resize: vertical;
+            min-height: 85px;
+        }
+
+        .btn-submit {
+            background: linear-gradient(135deg, var(--gold-primary), #c99637);
+            color: #050b14;
+            border: none;
+            padding: 13px 20px;
+            border-radius: 6px;
+            font-weight: 800;
+            font-size: 0.9rem;
+            cursor: pointer;
+            width: 100%;
+            letter-spacing: 1px;
+            text-transform: uppercase;
+            transition: all 0.2s ease;
+            box-shadow: 0 4px 12px var(--gold-glow);
+        }
+
+        .btn-submit:hover {
+            background: linear-gradient(135deg, var(--gold-light), var(--gold-primary));
+            box-shadow: 0 6px 18px rgba(226, 177, 87, 0.35);
+            transform: translateY(-1px);
+        }
+
+        .direct-info h3 {
+            font-size: 1.15rem;
+            color: var(--gold-light);
+            margin-bottom: 8px;
+            font-weight: 700;
+        }
+
+        .direct-info p {
+            font-size: 0.84rem;
+            color: var(--text-muted);
+            margin-bottom: 18px;
+        }
+
+        .info-item {
+            margin-bottom: 14px;
+            font-size: 0.88rem;
+            display: flex;
+            flex-wrap: wrap;
+            align-items: flex-start;
+            gap: 8px;
+        }
+
+        .info-item strong {
+            color: var(--text-main);
+            min-width: 110px;
+        }
+
+        .info-item span, .info-item a {
+            color: var(--accent-cyan);
+            text-decoration: none;
+            font-weight: 500;
+            word-break: break-all;
+        }
+
+        .info-item a:hover {
+            text-decoration: underline;
+        }
+
+        /* Footer */
+        footer {
+            background-color: #03060c;
+            color: var(--text-muted);
+            padding: 18px 15px;
+            font-size: 0.82rem;
+            text-align: center;
+            border-top: 2px solid var(--gold-primary);
+            margin-top: 50px;
+            line-height: 1.4;
+        }
+
+        @media (max-width: 768px) {
+            nav {
+                flex-direction: column;
+                padding: 12px 10px;
+                gap: 10px;
+                position: relative;
+            }
+
+            .nav-links {
+                width: 100%;
+                justify-content: center;
+                flex-wrap: wrap;
+                gap: 0px;
+            }
+
+            .nav-links li a {
+                padding: 6px 12px;
+                font-size: 0.85rem;
+            }
+
+            .nav-links li a.active::after {
+                bottom: -2px;
+            }
+
+            .contact-card {
+                grid-template-columns: 1fr;
+                padding: 22px;
+                gap: 25px;
+            }
+
+            .container {
+                padding: 30px 15px;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Top Navigation -->
+    <nav>
+        <a href="#home" class="nav-brand">
+            <img src="logo.png" alt="Global Trading Solutions Logo" class="nav-logo-img">
+            <span>Global Trading Solutions LLC</span>
+        </a>
+        <ul class="nav-links">
+            <li><a href="#home" class="active">Inicio</a></li>
+            <li><a href="#divisions">Divisiones</a></li>
+            <li><a href="#operations">Operaciones</a></li>
+            <li><a href="#contact">Contacto</a></li>
+        </ul>
+    </nav>
+
+    <!-- Header / Hero -->
+    <header id="home">
+        <div class="hero-logo-center">
+            <img src="logo.png" alt="Global Trading Solutions LLC">
+        </div>
+        <h1>Global Trading Solutions LLC</h1>
+        <div class="hero-tagline">Parent Entity | Commercial Trade | Portfolio Operations</div>
+        <p class="hero-desc">
+            Parent holding entity directing commercial initiatives, direct-to-consumer e-commerce retail networks, and international supply chain governance with rigorous operational compliance.
+        </p>
+        <div class="quote-badge">
+            "Driving scalable value across digital commerce and strategic enterprise."
+        </div>
+    </header>
+
+    <div class="container">
+        
+        <!-- Operating Divisions -->
+        <section id="divisions">
+            <div class="section-header">
+                <h2>Corporate Portfolio & Subsidiaries</h2>
+                <p>Commercial ventures and operational divisions managed under the parent structure of Global Trading Solutions LLC.</p>
+            </div>
+            <div class="cards-grid">
+                <div class="card">
+                    <span class="badge-brand">Consumer Division (DBA)</span>
+                    <div class="card-icon">✨</div>
+                    <h3>Vibe Beauty Brand</h3>
+                    <p>Direct-to-consumer e-commerce retail brand focused on curated cosmetics, premium skincare, and specialized hair care essentials.</p>
+                </div>
+                <div class="card">
+                    <span class="badge-brand">Trade & Sourcing</span>
+                    <div class="card-icon">🌐</div>
+                    <h3>Commercial Sourcing & Logistics</h3>
+                    <p>International supplier vetting, commercial procurement, fulfillment logistics, and verified trade flow management.</p>
+                </div>
+                <div class="card">
+                    <span class="badge-brand">Parent Governance</span>
+                    <div class="card-icon">📊</div>
+                    <h3>Strategic Portfolio Management</h3>
+                    <p>Standardized financial oversight, multi-brand incubation, legal entity compliance, and scalable operational frameworks.</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- Core Operations -->
+        <section id="operations">
+            <div class="section-header">
+                <h2>Core Strategic Capabilities</h2>
+                <p>Enterprise frameworks ensuring operational efficiency and commercial scalability.</p>
+            </div>
+            <div class="cards-grid">
+                <div class="card">
+                    <div class="card-icon">🎯</div>
+                    <h3>Multi-Brand Scaling</h3>
+                    <p>Incubating and deploying distinct commercial brands with verified direct-to-consumer digital channels.</p>
+                </div>
+                <div class="card">
+                    <div class="card-icon">📦</div>
+                    <h3>Supply Chain Reliability</h3>
+                    <p>Strict quality assurance protocols, transparent logistics routing, and reliable vendor management.</p>
+                </div>
+                <div class="card">
+                    <div class="card-icon">⚖️</div>
+                    <h3>Corporate Governance</h3>
+                    <p>Corporate records maintenance, standardized accounting compliance, and multi-tier operational control.</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- Corporate Contact Section -->
+        <section id="contact">
+            <div class="section-header">
+                <h2>Official Corporate Inquiries</h2>
+                <p>Official communication channel for commercial partnerships, banking, vendor inquiries, and institutional verification.</p>
+            </div>
+            
+            <div class="contact-card">
+                <div>
+                    <form onsubmit="handleInquiry(event)">
+                        <div class="form-group">
+                            <label>Company / Contact Name</label>
+                            <input type="text" id="senderName" class="form-control" placeholder="Your name or organization" required>
+                        </div>
+                        <div class="form-group">
+                            <label>Business Email</label>
+                            <input type="email" id="senderEmail" class="form-control" placeholder="corporate@domain.com" required>
+                        </div>
+                        <div class="form-group">
+                            <label>Department Target</label>
+                            <select id="departmentTarget" class="form-control">
+                                <option value="admin@globaltradingsolutionsllc.com">Executive Administration (admin@globaltradingsolutionsllc.com)</option>
+                                <option value="contact@globaltradingsolutionsllc.com">General Inquiries & Commercial Sourcing (contact@globaltradingsolutionsllc.com)</option>
+                                <option value="contact@globaltradingsolutionsllc.com">Vibe Beauty Brand Operations</option>
+                            </select>
+                        </div>
+                        <div class="form-group">
+                            <label>Inquiry Description</label>
+                            <textarea id="inquiryMessage" class="form-control" placeholder="Specify commercial, legal, or trade details..." required></textarea>
+                        </div>
+                        <button type="submit" class="btn-submit">Submit Inquiry</button>
+                    </form>
+                </div>
+
+                <div class="direct-info">
+                    <h3>Entity Verification & Direct Channels</h3>
+                    <p>Direct communication channels for Global Trading Solutions LLC:</p>
+                    
+                    <div class="info-item">
+                        <strong>Parent Entity:</strong>
+                        <span>Global Trading Solutions LLC</span>
+                    </div>
+                    <div class="info-item">
+                        <strong>Administration:</strong>
+                        <a href="mailto:admin@globaltradingsolutionsllc.com">admin@globaltradingsolutionsllc.com</a>
+                    </div>
+                    <div class="info-item">
+                        <strong>General Contact:</strong>
+                        <a href="mailto:contact@globaltradingsolutionsllc.com">contact@globaltradingsolutionsllc.com</a>
+                    </div>
+                    <div class="info-item">
+                        <strong>Commercial Brand:</strong>
+                        <span>Vibe Beauty Brand</span>
+                    </div>
+                    <div class="info-item">
+                        <strong>Headquarters:</strong>
+                        <span>Indianapolis, Indiana, USA</span>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+    </div>
+
+    <!-- Footer -->
+    <footer>
+        &copy; 2026 Global Trading Solutions LLC. Scalable commerce, operational precision, and strategic brand management.
+    </footer>
+
+    <script>
+        function handleInquiry(event) {
+            event.preventDefault();
+            const name = document.getElementById('senderName').value;
+            const email = document.getElementById('senderEmail').value;
+            const targetEmail = document.getElementById('departmentTarget').value;
+            const message = document.getElementById('inquiryMessage').value;
+
+            const subject = encodeURIComponent(`Corporate Inquiry from ${name}`);
+            const body = encodeURIComponent(`Sender Name / Company: ${name}\nSender Email: ${email}\n\nMessage / Inquiry:\n${message}`);
+
+            window.location.href = `mailto:${targetEmail}?subject=${subject}&body=${body}`;
+        }
+    </script>
+
+</body>
+</html>
