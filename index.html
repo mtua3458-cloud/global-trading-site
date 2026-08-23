@@ -86,7 +86,6 @@
             align-items: center;
         }
 
-        /* Estilo general y fluido para los enlaces (sin quedarse pegados) */
         .nav-links a {
             color: #cbd5e1;
             text-decoration: none;
@@ -101,7 +100,6 @@
             color: var(--gold);
         }
 
-        /* Solo se ilumina si pasa el ratón o si el usuario está explícitamente ahí */
         .nav-links a:hover::after {
             content: '';
             position: absolute;
@@ -113,13 +111,14 @@
             border-radius: 2px;
         }
 
-        /* Hero Section */
+        /* Hero Section con degradado suave hacia el fondo negro */
         .hero {
-            background-color: var(--bg-card);
-            padding: 4.5rem 2rem 3.5rem;
+            background: linear-gradient(to bottom, var(--bg-card) 0%, #101826 65%, var(--bg-body) 100%);
+            padding: 4.5rem 2rem 4rem;
             text-align: center;
-            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+            box-shadow: 0 15px 35px rgba(0, 0, 0, 0.3);
             margin-bottom: 2.5rem;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.04);
         }
 
         .hero-inner {
@@ -545,7 +544,7 @@
     </header>
 
     <main>
-        <!-- Hero Section con Esfera Flotante y Aura Azul -->
+        <!-- Hero Section con Degradado Suave hacia el Fondo -->
         <section class="hero">
             <div class="hero-inner">
                 
