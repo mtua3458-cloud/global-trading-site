@@ -13,7 +13,8 @@
             --bg-body: #0d121c;
             --bg-card: #151f2e;
             --gold: #f4c453;
-            --cyan: #38bdf8;
+            --cyan: #00d4ff;
+            --cyan-glow: #00f0ff;
             --badge-bg: #0c334d;
             --badge-border: #145374;
             --text-white: #ffffff;
@@ -126,15 +127,15 @@
             margin: 0 auto;
         }
 
-        /* Escenario 3D */
+        /* Escenario de flotación */
         .sphere-stage {
             display: flex;
             flex-direction: column;
             align-items: center;
             justify-content: center;
             margin: 0 auto 2.5rem;
-            width: 290px;
-            height: 290px;
+            width: 300px;
+            height: 300px;
             position: relative;
             perspective: 1200px;
             animation: floatSphere 4s ease-in-out infinite;
@@ -150,12 +151,12 @@
             transform-style: preserve-3d;
         }
 
-        /* Anillo Exterior Grueso Dorado-Platino / Azul */
+        /* Inclinación 3D del Cinturón del Logo */
         .orbit-tilt {
             position: absolute;
-            width: 300px;
-            height: 300px;
-            transform: rotateX(72deg) rotateY(-16deg);
+            width: 305px;
+            height: 305px;
+            transform: rotateX(72deg) rotateY(-18deg);
             transform-style: preserve-3d;
             pointer-events: none;
             display: flex;
@@ -163,27 +164,49 @@
             justify-content: center;
         }
 
-        .orbit-spinner {
+        /* 1. Aro Azul Chillón Grueso que Gira */
+        .orbit-blue-main {
+            position: absolute;
             width: 100%;
             height: 100%;
             border-radius: 50%;
-            padding: 7px; /* Grosor del cinturón */
+            padding: 6px; /* Grosor azul */
             background: conic-gradient(
                 from 0deg,
-                #faebd7 0%,
-                #d4af37 18%,
-                #00d4ff 42%,
-                #0055ff 55%,
-                #d4af37 78%,
-                #faebd7 100%
+                #00f0ff 0%,
+                #0088ff 25%,
+                rgba(0, 240, 255, 0.2) 50%,
+                #0088ff 75%,
+                #00f0ff 100%
             );
-            -webkit-mask: radial-gradient(farthest-side, transparent calc(100% - 7px), #fff calc(100% - 6px));
-            mask: radial-gradient(farthest-side, transparent calc(100% - 7px), #fff calc(100% - 6px));
-            box-shadow: 0 0 25px rgba(0, 212, 255, 0.7);
-            animation: spinOrbit 4.5s linear infinite;
+            -webkit-mask: radial-gradient(farthest-side, transparent calc(100% - 6px), #fff calc(100% - 5px));
+            mask: radial-gradient(farthest-side, transparent calc(100% - 6px), #fff calc(100% - 5px));
+            box-shadow: 0 0 28px rgba(0, 212, 255, 0.95);
+            animation: spinRing 4s linear infinite;
         }
 
-        @keyframes spinOrbit {
+        /* 2. Aro Dorado Fino Interno que Gira en Sincronía */
+        .orbit-gold-inner {
+            position: absolute;
+            width: calc(100% - 14px);
+            height: calc(100% - 14px);
+            border-radius: 50%;
+            padding: 2.5px; /* Grosor fino dorado */
+            background: conic-gradient(
+                from 180deg,
+                #fff2a8 0%,
+                #d4af37 35%,
+                rgba(212, 175, 55, 0.15) 60%,
+                #d4af37 85%,
+                #fff2a8 100%
+            );
+            -webkit-mask: radial-gradient(farthest-side, transparent calc(100% - 2.5px), #fff calc(100% - 2px));
+            mask: radial-gradient(farthest-side, transparent calc(100% - 2.5px), #fff calc(100% - 2px));
+            box-shadow: 0 0 10px rgba(244, 196, 83, 0.7);
+            animation: spinRing 4s linear infinite;
+        }
+
+        @keyframes spinRing {
             0% { transform: rotate(0deg); }
             100% { transform: rotate(360deg); }
         }
@@ -602,7 +625,8 @@
                 <div class="sphere-stage">
                     <div class="orbit-system">
                         <div class="orbit-tilt">
-                            <div class="orbit-spinner"></div>
+                            <div class="orbit-blue-main"></div>
+                            <div class="orbit-gold-inner"></div>
                         </div>
                         <div class="sphere-body"></div>
                     </div>
